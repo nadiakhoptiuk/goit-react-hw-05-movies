@@ -3,7 +3,6 @@ import s from './SearchForm.module.css';
 
 export default function SearchForm({ setQuery }) {
   const [inputVal, setInputVal] = useState('');
-  // const [searchPhrase, setSearchPhrase] = useState('');
 
   const handleInputChange = evt => {
     setInputVal(evt.target.value);

@@ -1,10 +1,18 @@
+import { useState, useEffect } from 'react';
+import { fetchTrendingMovies } from 'service/service';
 import Section from 'components/Section';
 import MovieList from 'components/MovieList';
 
-export default function HomeView({ query, setQuery }) {
+export default function HomeView() {
+  const [movielist, setMovielist] = useState([]);
+
+  useEffect(() => {
+    fetchTrendingMovies().then(res => setMovielist(res.results));
+  }, []);
+
   return (
     <Section title="Trending today">
-      <MovieList query={query} />
+      <MovieList moviesArray={movielist} />
     </Section>
   );
 }
