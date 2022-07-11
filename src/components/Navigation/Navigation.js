@@ -19,7 +19,7 @@ export default function Navigation() {
       <li className={s.navItem}>
         <NavLink
           className={({ isActive }) => (isActive ? s.activeLink : s.link)}
-          to={`/${movies}`}
+          to={movies}
         >
           Movies
         </NavLink>

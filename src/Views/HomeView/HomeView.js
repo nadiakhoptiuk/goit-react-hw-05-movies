@@ -4,15 +4,16 @@ import Section from 'components/Section';
 import MovieList from 'components/MovieList';
 
 export default function HomeView() {
-  const [movielist, setMovielist] = useState([]);
+  const [trendingMovielist, setTrendingMovielist] = useState([]);
 
   useEffect(() => {
-    fetchTrendingMovies().then(res => setMovielist(res.results));
+    fetchTrendingMovies().then(res => setTrendingMovielist(res.results));
   }, []);
+  console.log('trendingMovielist', trendingMovielist);
 
   return (
     <Section title="Trending today">
-      <MovieList moviesArray={movielist} />
+      <MovieList moviesArray={trendingMovielist} />
     </Section>
   );
 }

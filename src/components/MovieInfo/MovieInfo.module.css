@@ -1,0 +1,30 @@
+.movieInfo {
+  display: flex;
+}
+
+.movieImgWrapper {
+  width: 300px;
+  height: auto;
+  min-width: 200px;
+  margin-right: 25px;
+}
+
+.movieImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.desc {
+  font-size: 15px;
+}
+
+.movieTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.descTitle {
+  font-size: 18px;
+  font-weight: 600;
+}

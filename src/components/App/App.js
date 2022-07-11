@@ -1,12 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 import constants from 'constants';
 import Header from '../Header';
 import HomeView from '../../Views/HomeView';
 import MoviesView from 'Views/MoviesView';
 import NotFoundView from 'Views/NotFoundView';
-// import s from './App.module.css';
 import Navigation from 'components/Navigation';
 import MovieInfoView from 'Views/MovieInfoView';
 
@@ -22,10 +20,9 @@ export default function App() {
       <main>
         <Routes>
           <Route exact path={home} element={<HomeView />} />
-
+          <Route path={id} element={<MovieInfoView />} />
           <Route path={movies} element={<MoviesView />} />
 
-          <Route path={id} element={<MovieInfoView />} />
           <Route path={notFound} element={<NotFoundView />} />
         </Routes>
       </main>

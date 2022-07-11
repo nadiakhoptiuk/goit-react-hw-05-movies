@@ -16,6 +16,8 @@ export default function MoviesView() {
     fetchMoviesByKeyword(query).then(res => setMovielist(res.results));
   }, [query]);
 
+  console.log('movielist', movielist);
+
   return (
     <Section>
       <SearchForm setQuery={setQuery} />

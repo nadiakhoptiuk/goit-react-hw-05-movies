@@ -17,7 +17,6 @@ export default function SearchForm({ setQuery }) {
     }
 
     const queryString = inputVal.trim().split(' ').join('+');
-    console.log(queryString);
 
     setQuery(queryString);
     setInputVal('');

@@ -8,7 +8,7 @@ export default function MovieInfoView() {
   const {
     state: { id },
   } = location;
-  console.log(id);
+  console.log(location);
 
   return (
     <Section>

@@ -1,7 +1,7 @@
 const constants = {
   home: '/',
-  movies: 'movies',
-  id: 'movies/:movieID',
+  movies: '/movies',
+  id: '/movies/:movieID/*',
   notFound: '*',
 };
 
