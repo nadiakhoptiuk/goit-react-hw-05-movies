@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchMovieById, fetchGetGenresList } from '../../service/service';
+import { fetchMovieById } from '../../service/service';
 import s from './MovieInfo.module.css';
 
 export default function MovieInfo({ movieId }) {

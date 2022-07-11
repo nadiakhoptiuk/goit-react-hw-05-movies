@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import constants from 'constants';
 import Header from '../Header';
-import HomeView from '../../Views/HomeView';
+import HomeView from 'Views/HomeView';
 import MoviesView from 'Views/MoviesView';
 import NotFoundView from 'Views/NotFoundView';
 import Navigation from 'components/Navigation';
