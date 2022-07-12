@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { fetchCast } from 'service/service';
 import Cast from 'components/Cast/Cast';
-// import s from './Casts.module.css';
+import s from './Casts.module.css';
 
 export default function Casts() {
   const [casts, setCasts] = useState([]);
@@ -21,7 +21,7 @@ export default function Casts() {
       {casts
         ? casts.map(({ name, character, profile_path, id: actorId }) => {
             return (
-              <li key={actorId}>
+              <li key={actorId} className={s.castItem}>
                 <Cast name={name} character={character} src={profile_path} />
               </li>
             );

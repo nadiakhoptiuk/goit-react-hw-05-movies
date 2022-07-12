@@ -8,3 +8,12 @@
   height: 100%;
   object-fit: cover;
 }
+
+.actorName {
+  font-weight: 700;
+  margin: 10px 0 5px;
+}
+
+.character {
+  margin: 5px 0;
+}
