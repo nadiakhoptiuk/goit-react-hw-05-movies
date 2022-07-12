@@ -15,7 +15,14 @@ export async function fetchMoviesByKeyword(query) {
 
 export async function fetchMovieById(movieId) {
   return await fetch(`${BASE_URL}movie/${movieId}?api_key=${API_KEY}`).then(
-    res => res.json()
+    res => {
+      if (!res.ok) {
+        alert('No detailed information');
+        return null;
+      }
+
+      return res.json();
+    }
   );
 }
 
@@ -24,7 +31,7 @@ export async function fetchGetGenresList(array) {
     .then(res => res.json())
     .then(res => {
       const arrOfGenres = array.map(({ id }) => {
-        return res.find(obj => obj);
+        return res.find(obj => obj.id === id); // TODO
       });
       console.log(arrOfGenres);
       return arrOfGenres?.map(obj => obj.name).join(' ');
