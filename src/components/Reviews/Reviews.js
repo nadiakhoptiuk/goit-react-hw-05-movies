@@ -9,7 +9,9 @@ export default function Reviews() {
   const location = useLocation();
 
   const {
-    state: { id },
+    state: {
+      movie: { id },
+    },
   } = location;
 
   useEffect(() => {

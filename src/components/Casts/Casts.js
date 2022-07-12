@@ -9,12 +9,14 @@ export default function Casts() {
   const location = useLocation();
 
   const {
-    state: { id },
+    state: {
+      movie: { id },
+    },
   } = location;
 
   useEffect(() => {
     fetchCast(id).then(res => {
-      if (res.cast.length === 0) {
+      if (res.cast?.length === 0) {
         setCasts(null);
         return;
       }
@@ -25,7 +27,7 @@ export default function Casts() {
   return (
     <ul>
       {casts !== null ? (
-        casts.map(({ name, character, profile_path, id: actorId }) => {
+        casts?.map(({ name, character, profile_path, id: actorId }) => {
           return (
             <li key={actorId} className={s.castItem}>
               <Cast name={name} character={character} src={profile_path} />

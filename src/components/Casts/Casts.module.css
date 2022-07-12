@@ -1,5 +1,7 @@
 .castItem {
+  width: 250px;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #bdbcbc;
+  border-radius: 4px;
 }
