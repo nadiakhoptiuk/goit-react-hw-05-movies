@@ -26,17 +26,17 @@ export async function fetchMovieById(movieId) {
   );
 }
 
-export async function fetchGetGenresList(array) {
-  return await fetch(`${BASE_URL}genre/movie/list?api_key=${API_KEY}`)
-    .then(res => res.json())
-    .then(res => {
-      const arrOfGenres = array.map(({ id }) => {
-        return res.find(obj => obj.id === id); // TODO
-      });
-      console.log(arrOfGenres);
-      return arrOfGenres?.map(obj => obj.name).join(' ');
-    });
-}
+// export async function fetchGetGenresList(array) {
+//   return await fetch(`${BASE_URL}genre/movie/list?api_key=${API_KEY}`)
+//     .then(res => res.json())
+//     .then(res => {
+//       const arrOfGenres = array.map(({ id }) => {
+//         return res.find(obj => obj.id === id); // TODO
+//       });
+//       console.log(arrOfGenres);
+//       return arrOfGenres?.map(obj => obj.name).join(' ');
+//     });
+// }
 
 export async function fetchCast(movieId) {
   return await fetch(

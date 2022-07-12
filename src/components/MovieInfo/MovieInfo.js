@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
-import { fetchMovieById, fetchGetGenresList } from 'service/service';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { fetchMovieById } from 'service/service';
 import { useNavigate } from 'react-router-dom';
 import s from './MovieInfo.module.css';
 import constants from 'constants';
 
-export default function MovieInfo({ locationObj }) {
+export default function MovieInfo({
+  locationObj = { pathname: '/', search: null },
+}) {
   const [movie, setMovie] = useState(null);
   const { movieID } = useParams();
+  const location = useLocation();
 
   const { search, pathname } = locationObj;
   console.log(search, pathname);
@@ -29,20 +32,6 @@ export default function MovieInfo({ locationObj }) {
         .join(' ');
     }
 
-    // try {
-    //   fetchMovieById(movieId).then(res => {
-    //     const genresTitles = getGenresNames(res.genres);
-    //     setMovie({ ...res, genresTitles });
-    //   });
-    // } catch (error) {
-    //   fetchMovieById(movieId).then(res => {
-    //     console.log(res);
-
-    //     const genresTitles = fetchGetGenresList(res.genres);
-    //     setMovie({ ...res, genresTitles });
-    //   });
-    // }
-
     fetchMovieById(movieID).then(res => {
       if (res === null) {
         setMovie(null);
@@ -52,13 +41,6 @@ export default function MovieInfo({ locationObj }) {
       const genresTitles = getGenresNames(res.genres);
       setMovie({ ...res, genresTitles });
     });
-
-    // fetchMovieById(movieId).then(res => {
-    //   console.log(res);
-
-    //   const genresTitles = fetchGetGenresList(res.genres);
-    //   setMovie({ ...res, genresTitles });
-    // });
   }, [movieID]);
 
   return (
@@ -68,6 +50,7 @@ export default function MovieInfo({ locationObj }) {
           <button className={s.btnBack} type="button" onClick={handleGoBack}>
             &#129044; Go Back
           </button>
+
           <article className={s.movieInfo}>
             <div className={s.movieInfoBox}>
               {movie.poster_path ? (
@@ -100,7 +83,7 @@ export default function MovieInfo({ locationObj }) {
                 <li className={s.addListItem}>
                   <Link
                     to={`/${movies}/${movieID}/${casts}`}
-                    state={{ locationObj }}
+                    state={{ from: location }}
                   >
                     Casts
                   </Link>
@@ -108,7 +91,7 @@ export default function MovieInfo({ locationObj }) {
                 <li className={s.addListItem}>
                   <Link
                     to={`/${movies}/${movieID}/${reviews}`}
-                    state={{ locationObj }}
+                    state={{ from: location }}
                   >
                     Reviews
                   </Link>

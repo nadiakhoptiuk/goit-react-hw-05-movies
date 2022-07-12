@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchCast } from 'service/service';
 import Cast from 'components/Cast/Cast';
 import s from './Casts.module.css';
 
 export default function Casts() {
   const [casts, setCasts] = useState([]);
-
   const { movieID } = useParams();
 
   useEffect(() => {
