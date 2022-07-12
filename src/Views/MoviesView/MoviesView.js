@@ -1,9 +1,16 @@
+import { lazy, Suspense } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { MutatingDots } from 'react-loader-spinner';
+
 import { fetchMoviesByKeyword } from 'service/service';
 import Section from '../../components/Section';
 import SearchForm from '../../components/SearchForm';
-import MovieList from 'components/MovieList';
+import s from './MoviesView.module.css';
+
+const MovieList = lazy(() =>
+  import('components/MovieList' /* webpackChunkName: "movie-list" */)
+);
 
 export default function MoviesView() {
   const [movielist, setMovielist] = useState([]);
@@ -23,7 +30,15 @@ export default function MoviesView() {
   return (
     <Section>
       <SearchForm setSearchParams={setSearchParams} />
-      <MovieList moviesArray={movielist} />
+      <Suspense
+        fallback={
+          <div className={s.loader}>
+            <MutatingDots />
+          </div>
+        }
+      >
+        <MovieList moviesArray={movielist} />
+      </Suspense>
     </Section>
   );
 }

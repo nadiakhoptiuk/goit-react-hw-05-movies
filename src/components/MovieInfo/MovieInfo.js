@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
+import { MutatingDots } from 'react-loader-spinner';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieById } from 'service/service';
 import { useNavigate } from 'react-router-dom';
 import s from './MovieInfo.module.css';
@@ -10,7 +12,6 @@ export default function MovieInfo({
 }) {
   const [movie, setMovie] = useState(null);
   const { movieID } = useParams();
-  const location = useLocation();
 
   const { search, pathname } = locationObj;
   console.log(search, pathname);
@@ -83,7 +84,7 @@ export default function MovieInfo({
                 <li className={s.addListItem}>
                   <Link
                     to={`/${movies}/${movieID}/${casts}`}
-                    state={{ from: location }}
+                    state={{ from: locationObj }}
                   >
                     Casts
                   </Link>
@@ -91,7 +92,7 @@ export default function MovieInfo({
                 <li className={s.addListItem}>
                   <Link
                     to={`/${movies}/${movieID}/${reviews}`}
-                    state={{ from: location }}
+                    state={{ from: locationObj }}
                   >
                     Reviews
                   </Link>
@@ -99,7 +100,15 @@ export default function MovieInfo({
               </ul>
             </div>
           </article>
-          <Outlet />
+          <Suspense
+            fallback={
+              <div className={s.loader}>
+                <MutatingDots />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </>
       ) : null}
     </>

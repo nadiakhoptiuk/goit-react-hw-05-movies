@@ -9,7 +9,6 @@ export default function HomeView() {
   useEffect(() => {
     fetchTrendingMovies().then(res => setTrendingMovielist(res.results));
   }, []);
-  // console.log('trendingMovielist', trendingMovielist);
 
   return (
     <Section title="Trending today">
