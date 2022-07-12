@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { fetchReviews } from '../../service/service';
-import Review from 'components/Review/Review';
+import { fetchReviews } from 'service/service';
+import Review from 'components/Review';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState('');
@@ -13,21 +13,21 @@ export default function Reviews() {
 
   useEffect(() => {
     fetchReviews(id).then(res => {
-      setReviews(res.results);
+      res.results.length !== 0 ? setReviews(res.results) : alert('No results');
     });
   }, [id]);
 
   return (
     <ul>
-      {reviews.map(({ author, content }) => {
-        console.log({ author, content });
-
-        return (
-          <li key={author}>
-            <Review author={author} content={content} />
-          </li>
-        );
-      })}
+      {reviews
+        ? reviews.map(({ author, content, author_details }) => {
+            return (
+              <li key={author_details.username}>
+                <Review author={author} content={content} />
+              </li>
+            );
+          })
+        : null}
     </ul>
   );
 }

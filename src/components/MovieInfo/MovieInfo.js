@@ -5,7 +5,7 @@ import s from './MovieInfo.module.css';
 import constants from 'constants';
 
 export default function MovieInfo({ movieId }) {
-  const { casts, reviews } = constants;
+  const { casts, reviews, movies } = constants;
 
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/';
   const [movie, setMovie] = useState(null);
@@ -58,12 +58,12 @@ export default function MovieInfo({ movieId }) {
           <p className={s.descTitle}>Additional Information</p>
           <ul className={s.addList}>
             <li className={s.addListItem}>
-              <Link to={`/movies/${movieId}/${casts}`} state={movie}>
+              <Link to={`/${movies}/${movieId}/${casts}`} state={movie}>
                 Casts
               </Link>
             </li>
             <li className={s.addListItem}>
-              <Link to={`/movies/${movieId}/${reviews}`} state={movie}>
+              <Link to={`/${movies}/${movieId}/${reviews}`} state={movie}>
                 Reviews
               </Link>
             </li>
