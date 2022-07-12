@@ -6,15 +6,13 @@ export default function MovieInfoView() {
   const location = useLocation();
 
   const {
-    state: {
-      movie: { id },
-      from,
-    },
+    state: { locationObj },
   } = location;
+  console.log(location);
 
   return (
     <Section>
-      <MovieInfo movieId={id} parentPath={from} />
+      <MovieInfo locationObj={locationObj} />
     </Section>
   );
 }

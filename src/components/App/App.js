@@ -11,7 +11,7 @@ import Casts from 'components/Casts/Casts';
 import Reviews from 'components/Reviews';
 
 export default function App() {
-  const { home, movies, notFound, id } = constants;
+  const { home, movies, notFound, id, casts, reviews } = constants;
 
   return (
     <>
@@ -26,8 +26,8 @@ export default function App() {
           <Route path={movies} element={<MoviesView />} />
 
           <Route path={`movies/${id}`} element={<MovieInfoView />}>
-            <Route path="casts" element={<Casts />} />
-            <Route path="reviews" element={<Reviews />} />
+            <Route path={casts} element={<Casts />} />
+            <Route path={reviews} element={<Reviews />} />
           </Route>
 
           <Route path={notFound} element={<NotFoundView />} />

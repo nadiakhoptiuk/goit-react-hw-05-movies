@@ -5,7 +5,7 @@ import MovieItem from 'components/MovieItem';
 export default function MovieList({ moviesArray }) {
   const location = useLocation();
 
-  const { pathname } = location;
+  // const { pathname } = location;
 
   return (
     <ul className={s.movieList}>
@@ -17,7 +17,7 @@ export default function MovieList({ moviesArray }) {
               title={movieItem.title}
               name={movieItem.name}
               state={movieItem}
-              parentPath={pathname}
+              location={location}
             />
           </li>
         );

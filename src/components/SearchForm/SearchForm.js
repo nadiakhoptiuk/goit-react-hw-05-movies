@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import s from './SearchForm.module.css';
 
-export default function SearchForm({ setQuery }) {
+export default function SearchForm({ setSearchParams }) {
   const [inputVal, setInputVal] = useState('');
 
   const handleInputChange = evt => {
@@ -17,8 +17,7 @@ export default function SearchForm({ setQuery }) {
     }
 
     const queryString = inputVal.trim().split(' ').join('+');
-
-    setQuery(queryString);
+    setSearchParams({ query: queryString });
     setInputVal('');
   };
 

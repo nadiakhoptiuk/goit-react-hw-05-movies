@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieById, fetchGetGenresList } from 'service/service';
 import { useNavigate } from 'react-router-dom';
 import s from './MovieInfo.module.css';
 import constants from 'constants';
 
-export default function MovieInfo({ movieId, parentPath }) {
+export default function MovieInfo({ locationObj }) {
   const [movie, setMovie] = useState(null);
+  const { movieID } = useParams();
+
+  const { search, pathname } = locationObj;
+  console.log(search, pathname);
 
   const { casts, reviews, movies } = constants;
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/';
-
   const navigate = useNavigate();
 
   function handleGoBack() {
-    navigate(`${parentPath}`, { replace: false });
+    navigate(`${pathname}${search}`, { replace: false });
   }
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export default function MovieInfo({ movieId, parentPath }) {
     //   });
     // }
 
-    fetchMovieById(movieId).then(res => {
+    fetchMovieById(movieID).then(res => {
       if (res === null) {
         setMovie(null);
         return;
@@ -56,7 +59,7 @@ export default function MovieInfo({ movieId, parentPath }) {
     //   const genresTitles = fetchGetGenresList(res.genres);
     //   setMovie({ ...res, genresTitles });
     // });
-  }, [movieId]);
+  }, [movieID]);
 
   return (
     <>
@@ -95,14 +98,17 @@ export default function MovieInfo({ movieId, parentPath }) {
               <p className={s.descTitle}>Additional Information</p>
               <ul className={s.addList}>
                 <li className={s.addListItem}>
-                  <Link to={`/${movies}/${movieId}/${casts}`} state={{ movie }}>
+                  <Link
+                    to={`/${movies}/${movieID}/${casts}`}
+                    state={{ locationObj }}
+                  >
                     Casts
                   </Link>
                 </li>
                 <li className={s.addListItem}>
                   <Link
-                    to={`/${movies}/${movieId}/${reviews}`}
-                    state={{ movie }}
+                    to={`/${movies}/${movieID}/${reviews}`}
+                    state={{ locationObj }}
                   >
                     Reviews
                   </Link>
