@@ -1,18 +1,15 @@
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MovieInfo from 'components/MovieInfo';
 import Section from 'components/Section';
 
 export default function MovieInfoView() {
-  const location = useLocation();
+  // const location = useLocation();
+  const params = useParams();
 
-  const {
-    state: { id },
-  } = location;
-  console.log(location);
+  const { movieID } = params;
 
-  return (
-    <Section>
-      <MovieInfo movieId={id} />
-    </Section>
-  );
+  // console.log(params);
+
+  return <Section>{<MovieInfo movieId={movieID} />}</Section>;
 }

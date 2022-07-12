@@ -1,4 +1,4 @@
-.movieInfo {
+.movieInfoBox {
   display: flex;
 }
 
@@ -27,4 +27,20 @@
 .descTitle {
   font-size: 18px;
   font-weight: 600;
+  margin: 10px 0;
+}
+
+.addInfoWrapper {
+  padding: 20px 0;
+}
+
+.addList {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.addListItem {
+  margin: 5px 0;
 }

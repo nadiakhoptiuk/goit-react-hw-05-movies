@@ -1,8 +1,10 @@
 const constants = {
   home: '/',
-  movies: '/movies',
-  id: '/movies/:movieID/*',
+  movies: 'movies',
+  id: ':movieID',
   notFound: '*',
+  casts: 'casts',
+  reviews: 'reviews',
 };
 
 export default constants;
