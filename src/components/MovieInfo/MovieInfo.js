@@ -58,12 +58,12 @@ export default function MovieInfo({ movieId }) {
           <p className={s.descTitle}>Additional Information</p>
           <ul className={s.addList}>
             <li className={s.addListItem}>
-              <Link to={`${casts}`} state={movie}>
+              <Link to={`/movies/${movieId}/${casts}`} state={movie}>
                 Casts
               </Link>
             </li>
             <li className={s.addListItem}>
-              <Link to={`${reviews}`} state={movie}>
+              <Link to={`/movies/${movieId}/${reviews}`} state={movie}>
                 Reviews
               </Link>
             </li>

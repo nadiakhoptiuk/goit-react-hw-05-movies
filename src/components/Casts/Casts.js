@@ -14,8 +14,6 @@ export default function Casts() {
 
   useEffect(() => {
     fetchCast(id).then(res => {
-      console.log(res);
-
       setCasts(res.cast);
     });
   }, [id]);

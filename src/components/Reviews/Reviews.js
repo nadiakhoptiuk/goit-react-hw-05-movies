@@ -13,7 +13,6 @@ export default function Reviews() {
 
   useEffect(() => {
     fetchReviews(id).then(res => {
-      console.log(res);
       setReviews(res.results);
     });
   }, [id]);
