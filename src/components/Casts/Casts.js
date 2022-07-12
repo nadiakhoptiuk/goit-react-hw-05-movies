@@ -13,20 +13,28 @@ export default function Casts() {
   } = location;
 
   useEffect(() => {
-    fetchCast(id).then(res => setCasts(res.cast));
+    fetchCast(id).then(res => {
+      if (res.cast.length === 0) {
+        setCasts(null);
+        return;
+      }
+      setCasts(res.cast);
+    });
   }, [id]);
 
   return (
     <ul>
-      {casts
-        ? casts.map(({ name, character, profile_path, id: actorId }) => {
-            return (
-              <li key={actorId} className={s.castItem}>
-                <Cast name={name} character={character} src={profile_path} />
-              </li>
-            );
-          })
-        : null}
+      {casts !== null ? (
+        casts.map(({ name, character, profile_path, id: actorId }) => {
+          return (
+            <li key={actorId} className={s.castItem}>
+              <Cast name={name} character={character} src={profile_path} />
+            </li>
+          );
+        })
+      ) : (
+        <p>No information about casts</p>
+      )}
     </ul>
   );
 }

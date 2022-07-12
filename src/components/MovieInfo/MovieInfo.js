@@ -69,13 +69,17 @@ export default function MovieInfo({ movieId }) {
               ) : null}
               <div className={s.movieDesc}>
                 <p className={s.movieTitle}>
-                  {movie?.original_title} {movie?.release_date.slice(0, 4)}
+                  {movie?.original_title} ({movie?.release_date.slice(0, 4)})
                 </p>
                 <p className={s.desc}>Rating: {movie?.vote_average}</p>
                 <p className={s.descTitle}>Overview</p>
                 <p className={s.desc}>{movie?.overview}</p>
-                <p className={s.descTitle}>Genres</p>
-                <p className={s.desc}>{movie?.genresTitles}</p>
+                {movie?.genresTitles ? (
+                  <>
+                    <p className={s.descTitle}>Genres</p>
+                    <p className={s.desc}>{movie?.genresTitles}</p>
+                  </>
+                ) : null}
               </div>
             </div>
             <div className={s.addInfoWrapper}>
