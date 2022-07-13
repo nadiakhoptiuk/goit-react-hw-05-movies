@@ -5,10 +5,7 @@ import Section from 'components/Section';
 export default function MovieInfoView() {
   const location = useLocation();
 
-  const {
-    state: { from },
-  } = location;
-  console.log(location);
+  const from = location?.state?.from || { pathname: '/', search: '' };
 
   return (
     <Section>

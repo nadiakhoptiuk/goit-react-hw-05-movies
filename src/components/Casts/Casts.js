@@ -19,11 +19,11 @@ export default function Casts() {
   }, [movieID]);
 
   return (
-    <ul>
+    <ul className={s.castsList}>
       {casts !== null ? (
-        casts?.map(({ name, character, profile_path, id: actorId }) => {
+        casts?.map(({ name, character, profile_path }, index) => {
           return (
-            <li key={actorId} className={s.castItem}>
+            <li key={index} className={s.castItem}>
               <Cast name={name} character={character} src={profile_path} />
             </li>
           );

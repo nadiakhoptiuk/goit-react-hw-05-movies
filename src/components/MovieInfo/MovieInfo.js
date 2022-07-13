@@ -12,9 +12,7 @@ export default function MovieInfo({
 }) {
   const [movie, setMovie] = useState(null);
   const { movieID } = useParams();
-
   const { search, pathname } = locationObj;
-  console.log(search, pathname);
 
   const { casts, reviews, movies } = constants;
   const BASE_IMG_URL = 'https://image.tmdb.org/t/p/';
@@ -82,20 +80,10 @@ export default function MovieInfo({
               <p className={s.descTitle}>Additional Information</p>
               <ul className={s.addList}>
                 <li className={s.addListItem}>
-                  <Link
-                    to={`/${movies}/${movieID}/${casts}`}
-                    state={{ from: locationObj }}
-                  >
-                    Casts
-                  </Link>
+                  <Link to={`/${movies}/${movieID}/${casts}`}>Casts</Link>
                 </li>
                 <li className={s.addListItem}>
-                  <Link
-                    to={`/${movies}/${movieID}/${reviews}`}
-                    state={{ from: locationObj }}
-                  >
-                    Reviews
-                  </Link>
+                  <Link to={`/${movies}/${movieID}/${reviews}`}>Reviews</Link>
                 </li>
               </ul>
             </div>

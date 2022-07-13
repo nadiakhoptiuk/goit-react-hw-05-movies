@@ -17,9 +17,9 @@ export default function Reviews() {
   return (
     <ul>
       {reviews ? (
-        reviews.map(({ author, content, author_details }) => {
+        reviews.map(({ author, content }, index) => {
           return (
-            <li key={author_details.username} className={s.reviewItem}>
+            <li key={index} className={s.reviewItem}>
               <Review author={author} content={content} />
             </li>
           );

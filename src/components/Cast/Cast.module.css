@@ -1,6 +1,7 @@
 .photoWrapper {
   height: 120px;
-  width: 80px;
+  width: auto;
+  max-width: 80px;
 }
 
 .photo {
